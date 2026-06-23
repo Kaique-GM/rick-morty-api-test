@@ -68,6 +68,14 @@
     }
 }
 
+@media (max-width: 1200px) {
+    .navbar {
+        max-width: 800px;
+        margin: 0 auto;
+
+    }
+}
+
 @media (max-width: 768px) {
     .navbar {
         max-width: 600px;

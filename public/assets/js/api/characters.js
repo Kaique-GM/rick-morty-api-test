@@ -54,6 +54,21 @@ async function loadCharacters(url) {
     data.results.forEach(character => {
         const card = document.createElement("div");
         card.classList.add("cardBox");
+        let statusClass;
+
+        switch (character.status) {
+            case "Alive":
+                statusClass = "status-alive";
+                break;
+
+            case "Dead":
+                statusClass = "status-dead";
+                break;
+
+            default:
+                statusClass = "status-unknown";
+                break;
+        }
 
         card.innerHTML = `
             <div class="cardImg">
@@ -64,7 +79,7 @@ async function loadCharacters(url) {
                 <h2>${character.name}</h2>
 
                 <div class="status">
-                    <i class="fa-solid fa-circle"></i>
+                    <i class="fa-solid fa-circle ${statusClass}"></i>
                     <span>${character.status} - ${character.species}</span>
                 </div>
 

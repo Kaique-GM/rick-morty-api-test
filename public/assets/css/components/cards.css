@@ -87,6 +87,7 @@
     align-items: center;
     gap: 5px;
     font-size: 18px;
+    padding: 0px 10px;
 }
 
 .cardSection .cardBox:hover .cardText .status {
@@ -95,7 +96,18 @@
 
 .cardSection .cardBox .cardText .status i {
     font-size: 8px;
+}
+
+.status-alive {
+    color: #2ed639;
+}
+
+.status-dead {
     color: #d63d2e;
+}
+
+.status-unknown {
+    color: #ccc;
 }
 
 .cardSection .cardBox .cardText .origem {
@@ -106,6 +118,7 @@
     gap: 3px;
     font-size: 18px;
     font-weight: 600;
+    padding: 0px 10px;
 }
 
 .cardSection .cardBox:hover .origem span {

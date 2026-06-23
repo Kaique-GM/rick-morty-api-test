@@ -1,0 +1,123 @@
+.navbar {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    padding: 20px 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: #333333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.navbar a:hover {
+    color: #ff9800;
+    transform: scale(1.1);
+}
+
+.navbar .links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.navbar .content {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+.navbar .links .loginButton {
+    background-color: #ff9800;
+    padding: 8px 32px;
+    border-radius: 112px;
+    color: white;
+    border-width: 3px 6px 6px 7px;
+    border-style: solid;
+    border-color: #333333;
+    margin-left: 24px;
+    transition: 0.5s;
+}
+
+.navbar .links .loginButton:hover {
+    background-color: #333333;
+    border-color: #ff9800;
+    transform: scale(1.1);
+}
+
+.navbar .mobile-menu-btn {
+    display: none;
+}
+
+@media (max-width: 1500px) {
+    .navbar {
+        max-width: 1200px;
+        margin: 0 auto;
+
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        max-width: 600px;
+        margin: 0 auto;
+
+    }
+}
+
+@media (max-width: 500px) {
+    .navbar {
+        max-width: 250px;
+        margin: 0 auto;
+        flex-direction: column;
+        border-bottom: 2px solid #333333;
+    }
+
+    .navbar .links {
+        max-height: 0px;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        transition: 0.3s ease;
+
+        display: flex;
+        margin-top: 20px;
+        flex-direction: column;
+        gap: 18px;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+    }
+
+    .navbar .links.active {
+        max-height: 500px;
+        pointer-events: auto;
+        opacity: 1;
+    }
+
+    .navbar .links .loginButton {
+        margin-left: 0px;
+    }
+
+    .navbar .mobile-menu-btn {
+        display: inline;
+        padding: 8px;
+        border: 2px solid #333333;
+        color: #333333;
+        border-radius: 10px;
+        background-color: white;
+        font-size: 24px;
+        font-weight: bold;
+    }
+}

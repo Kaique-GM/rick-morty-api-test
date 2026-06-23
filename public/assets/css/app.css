@@ -1,0 +1,10 @@
+@import url('./components/navbar.css');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}

@@ -6,7 +6,7 @@ export async function initNavbar() {
         return;
     }
 
-    const response = await fetch('/components/navbar.html');
+    const response = await fetch('views/components/navbar.html');
 
     const html = await response.text();
 

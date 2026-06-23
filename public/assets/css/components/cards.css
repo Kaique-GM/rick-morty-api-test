@@ -1,0 +1,174 @@
+
+.cardSection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 56px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardSection .cardBox {
+    background-color: #202329;
+    padding: 25px 15px;
+    border-radius: 50px;
+    border-width: 0px 0px 0px 8px;
+    border-style: solid;
+    border-color: #ff9800;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
+    transition: transform 0.3s;
+    transition: 0.3s;
+}
+
+.cardSection .cardBox:hover {
+    transform: scale(1.05);
+    background-color: #F5F5F5;
+    border-color: #202329;
+}
+
+.cardSection .cardBox .cardImg {
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.cardSection .cardBox .cardImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.cardSection .cardBox .cardImg:hover img {
+    transform: scale(1.05);
+}
+
+.cardSection .cardBox .cardText {
+    display: flex;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    gap: 15px;
+}
+
+.cardSection .cardBox .cardText h2 {
+    text-align: center;
+    width: 100%;
+    transition: 0.2s;
+    font-size: 28px;
+    text-decoration: underline #ff9800;
+    text-underline-offset: 6px;
+}
+
+.cardSection .cardBox:hover .cardText h2 {
+    color: #202329;
+    text-decoration: underline #202329;
+
+}
+
+.cardSection .cardBox .cardText .status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 18px;
+}
+
+.cardSection .cardBox:hover .cardText .status {
+    color: #202329;
+}
+
+.cardSection .cardBox .cardText .status i {
+    font-size: 8px;
+    color: #d63d2e;
+}
+
+.cardSection .cardBox .cardText .origem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 3px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.cardSection .cardBox:hover .origem span {
+    color: #202329;
+}
+
+.cardSection .cardBox .cardText p {
+    color: #9E9E9E;
+}
+
+@media (max-width: 1500px) {
+    .cardSection {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 5px;
+    }
+
+    .cardSection .cardBox .cardImg {
+        height: 200px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .cardSection {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        width: 100%;
+        max-width: 650px;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 5px;
+    }
+
+    .cardSection .cardBox .cardImg {
+        height: 200px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .cardSection {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 24px;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 5px;
+    }
+
+    .cardSection .cardBox .cardImg {
+        height: 200px;
+        width: 100%;
+    }
+}

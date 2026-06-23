@@ -1,0 +1,15 @@
+.reveal-grow {
+    opacity: 0;
+    transform: scale(0.6);
+}
+
+.animate-grow {
+    animation: grow 0.8s ease-out forwards;
+}
+
+@keyframes grow {
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

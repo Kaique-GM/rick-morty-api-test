@@ -16,7 +16,31 @@
 <body>
     <nav id="navbar"></nav>
 
-    <main id="characterBox"></main>
+    <main class="reveal-grow">
+
+        <div class="manageButtons">
+            <a href="/" class="returnButton">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+
+            <div>
+                <button class="editButton">
+                    Editar
+                </button>
+                <button class="deleteButton">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="characterBox"></div>
+
+        <div class="saveButtonBox">
+            <button class="saveButton">
+                Salvar Personagem
+            </button>
+        </div>
+    </main>
 
     <script type="module" src="/assets/js/details.js"></script>
 </body>

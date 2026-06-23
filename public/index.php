@@ -20,6 +20,10 @@ switch ($uri) {
         include 'views/about.html';
         break;
 
+    case '/cadastrar':
+        include 'views/register.html';
+        break;
+
     case '/login':
         include 'views/login.html';
         break;

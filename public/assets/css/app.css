@@ -10,3 +10,51 @@
 body {
     font-family: 'Inter', sans-serif;
 }
+
+.paginationButtons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0px;
+    gap: 15px;
+}
+
+.paginationButtons button {
+    background-color: #202329;
+    padding: 8px 32px;
+    border-radius: 112px;
+    color: white;
+    border-width: 3px 6px 6px 7px;
+    border-style: solid;
+    border-color: #ff9800;
+    transition: 0.5s;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.paginationButtons button:disabled {
+    background-color: rgb(32, 35, 41, 80%);
+    border-color: rgb(255, 153, 0, 80%);
+    cursor: default;
+}
+
+.paginationButtons button:disabled:hover {
+    background-color: rgb(32, 35, 41, 80%);
+    border-color: rgb(255, 153, 0, 80%);
+    transform: scale(1);
+}
+
+.paginationButtons button:hover {
+    background-color: #ff9800;
+    border-color: #202329;
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .paginationButtons {
+        flex-direction: column;
+        gap: 8px;
+    }
+}

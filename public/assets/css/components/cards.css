@@ -1,13 +1,13 @@
-
 .cardSection {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 56px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     justify-content: center;
     align-items: center;
+    padding: 20px 0px;
 }
 
 .cardSection .cardBox {
@@ -116,7 +116,7 @@
     color: #9E9E9E;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1400px) {
     .cardSection {
         display: grid;
         grid-template-columns: repeat(2, 1fr);

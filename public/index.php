@@ -8,8 +8,20 @@ switch ($uri) {
         include 'views/home.html';
         break;
 
-    case '/rotaX':
+    case '/personagem':
         include 'views/datails.html';
+        break;
+
+    case '/personagens':
+        include 'views/characters.html';
+        break;
+
+    case '/sobre':
+        include 'views/about.html';
+        break;
+
+    case '/login':
+        include 'views/login.html';
         break;
 
     default:

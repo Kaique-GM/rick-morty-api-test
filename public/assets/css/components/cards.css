@@ -24,6 +24,8 @@
     gap: 10px;
     box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.5);
     cursor: pointer;
+    text-decoration: none;
+
 
     transition: transform 0.3s;
     transition: 0.3s;
@@ -98,16 +100,16 @@
     font-size: 8px;
 }
 
-.status-alive {
-    color: #2ed639;
+.statusAlive {
+    color: #55CC44;
 }
 
-.status-dead {
+.statusDead {
     color: #d63d2e;
 }
 
-.status-unknown {
-    color: #ccc;
+.statusUnknown {
+    color: #9E9E9E;
 }
 
 .cardSection .cardBox .cardText .origem {

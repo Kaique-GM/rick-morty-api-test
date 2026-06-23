@@ -52,21 +52,22 @@ async function loadCharacters(url) {
     container.innerHTML = "";
 
     data.results.forEach(character => {
-        const card = document.createElement("div");
+        const card = document.createElement("a");
+        card.href = "/personagem?id=" + character.id;
         card.classList.add("cardBox");
         let statusClass;
 
         switch (character.status) {
             case "Alive":
-                statusClass = "status-alive";
+                statusClass = "statusAlive";
                 break;
 
             case "Dead":
-                statusClass = "status-dead";
+                statusClass = "statusDead";
                 break;
 
             default:
-                statusClass = "status-unknown";
+                statusClass = "statusUnknown";
                 break;
         }
 

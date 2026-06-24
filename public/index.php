@@ -1,5 +1,7 @@
 <?php
 
+require_once '../src/Controllers/AuthController.php';
+
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 switch ($uri) {
@@ -26,6 +28,15 @@ switch ($uri) {
 
     case '/login':
         include 'views/login.html';
+        break;
+
+    case '/register':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            exit;
+        }
+
+        AuthController::register();
         break;
 
     default:

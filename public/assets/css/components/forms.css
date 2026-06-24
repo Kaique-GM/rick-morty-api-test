@@ -62,6 +62,14 @@
     align-items: center;
 }
 
+.sucessMensage {
+    color: #22c55e;
+}
+
+.failMensage {
+    color: red;
+}
+
 .formSection .formBox form input {
     width: 100%;
     max-width: 300px;

@@ -48,4 +48,10 @@ class AuthController
 
         $_SESSION['user_id'] = $user['id'];
     }
+
+    public static function logout()
+    {
+        session_unset();
+        session_destroy();
+    }
 }

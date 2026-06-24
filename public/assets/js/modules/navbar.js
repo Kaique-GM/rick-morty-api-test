@@ -2,7 +2,7 @@ export async function initNavbar() {
 
     const navbar = document.getElementById('navbar');
 
-    if (!navbar){
+    if (!navbar) {
         return;
     }
 
@@ -20,5 +20,29 @@ export async function initNavbar() {
             console.log('clicou');
             menu.classList.toggle('active');
         });
+    }
+
+    const sessionBtn = document.getElementById("sessionButton");
+
+    const res = await fetch("/me");
+    const session = await res.json();
+
+    if (session.logged) {
+        sessionBtn.textContent = "Logout";
+
+        sessionBtn.addEventListener("click", async (e) => {
+
+            await fetch("/logout", {
+                method: "POST"
+            });
+
+            window.location.href = "/";
+        });
+
+    } else {
+        sessionBtn.textContent = "Login";
+        sessionBtn.onclick = () => {
+            window.location.href = "/login";
+        };
     }
 }

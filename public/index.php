@@ -35,6 +35,15 @@ switch ($uri) {
         include 'views/login.html';
         break;
 
+    case '/logout':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            exit;
+        }
+
+        AuthController::logout();
+        break;
+
     case '/register':
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             http_response_code(405);

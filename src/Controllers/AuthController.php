@@ -1,6 +1,6 @@
 <?php
 
-require_once '../src/Database/Connection.php';
+require_once '../src/Models/User.php';
 
 class AuthController
 {
@@ -13,29 +13,14 @@ class AuthController
             exit('E-mail e senha são obrigatórios');
         }
 
-        $pdo = Connection::getConnection();
+        $user = User::findByEmail($data['email']);
 
-        $check = $pdo->prepare("SELECT id FROM users WHERE email = ?");
-        $check->execute([$data['email']]);
-        if ($check->fetch()) {
+        if ($user) {
             http_response_code(409);
             exit('E-mail já cadastrado');
         }
 
-        $stmt = $pdo->prepare("
-        INSERT INTO users (email, password)
-        VALUES (?, ?)");
+        User::create($data['email'], $data['password']);
 
-        $passwordHash = password_hash(
-            $data['password'],
-            PASSWORD_DEFAULT
-        );
-
-        $stmt->execute([
-            $data['email'],
-            $passwordHash
-        ]);
-
-        echo "usuário criado";
     }
 }

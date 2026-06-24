@@ -5,6 +5,8 @@ error_reporting(E_ALL);
 
 require_once '../src/Controllers/AuthController.php';
 
+session_start();
+
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 switch ($uri) {
@@ -40,6 +42,22 @@ switch ($uri) {
         }
 
         AuthController::register();
+        break;
+
+    case '/loginUser':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            exit;
+        }
+
+        AuthController::login();
+        break;
+
+    case '/me':
+        echo json_encode([
+            'logged' => isset($_SESSION['user_id']),
+            'user_id' => $_SESSION['user_id'] ?? null,
+        ]);
         break;
 
     default:

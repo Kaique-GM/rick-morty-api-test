@@ -1,3 +1,32 @@
+.emptyView {
+    height: 80dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #333333;
+    font-size: 28px;
+    font-weight: bold;
+    gap: 10px;
+}
+
+.emptyView span {
+    text-align: center;
+    text-decoration: underline #ff9800;
+    text-underline-offset: 10px;
+}
+
+.emptyView a {
+    text-decoration: none;
+    color: #333333;
+    transition: 0.5s;
+}
+
+.emptyView a:hover {
+    color: #ff9800;
+    transform: scale(1.1);
+}
+
 .cardSection {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -185,5 +214,14 @@
     .cardSection .cardBox .cardImg {
         height: 200px;
         width: 100%;
+    }
+
+    .emptyView {
+    font-size: 22px;
+
+}
+
+    .emptyView span {
+        text-decoration: none;
     }
 }

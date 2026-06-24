@@ -17,7 +17,6 @@ export async function initNavbar() {
 
     if (btn && menu) {
         btn.addEventListener('click', () => {
-            console.log('clicou');
             menu.classList.toggle('active');
         });
     }

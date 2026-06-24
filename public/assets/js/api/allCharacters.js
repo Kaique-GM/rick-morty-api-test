@@ -1,3 +1,5 @@
+import { getUserId } from "../controllers/auth.js";
+
 export async function initCharacters() {
     let currentUrl = "https://rickandmortyapi.com/api/character";
     let nextUrl = null;
@@ -37,6 +39,52 @@ export async function initCharacters() {
         nextBtn.disabled = !nextUrl;
         prevBtn.disabled = !prevUrl;
     }
+}
+
+export async function initSavedCharacters() {
+    const userId = await getUserId();
+    const container = document.getElementById("cardSection");
+
+    if (!container) {
+        return;
+    }
+
+    container.innerHTML = "";
+
+    const response = await fetch("/getCharacters", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            user_id: userId
+        })
+    });
+
+    const data = await response.json();
+
+    data.characters.forEach(character => {
+        const card = document.createElement("a");
+        card.href = "/personagem?id=" + character.api_id;
+        card.classList.add("cardBox");
+
+        card.innerHTML = `
+            <div class="cardImg">
+                <img src="${character.image}" alt="${character.name}" draggable="false">
+            </div>
+
+            <div class="cardText">
+                <h2>${character.name}</h2>
+
+                <div class="origem">
+                    <p>Espécie: </p>
+                    <span>${character.species}</span>
+                </div>
+            </div>
+        `;
+
+        container.appendChild(card);
+    });
 }
 
 async function loadCharacters(url) {

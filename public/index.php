@@ -79,6 +79,15 @@ switch ($uri) {
         CharacterController::saveCharacter();
         break;
 
+    case '/getCharacters':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            exit;
+        }
+
+        CharacterController::findAllCharacters();
+        break;
+
     default:
         http_response_code(404);
         echo "Página não encontrada";

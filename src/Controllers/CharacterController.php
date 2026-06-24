@@ -46,4 +46,24 @@ class CharacterController
         ]);
         exit;
     }
+
+    public static function findAllCharacters()
+    {
+
+        header('Content-Type: application/json');
+
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        if (!isset($data['user_id'])) {
+            http_response_code(400);
+            exit('Usuário não está logado');
+        }
+
+        $characters = Character::findCharactersByUserId($data['user_id']);
+
+        echo json_encode([
+            'characters' => $characters
+        ]);
+        exit;
+    }
 }

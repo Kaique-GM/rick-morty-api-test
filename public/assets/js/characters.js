@@ -1,11 +1,12 @@
 import { initNavbar } from './modules/navbar.js';
 import { initAnimations } from './modules/animations.js';
-import { initCharacter } from './api/detailCharacter.js';
+import { initSavedCharacters } from './api/allCharacters.js';
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
     initNavbar();
     initAnimations();
-    initCharacter();
-    
+    initSavedCharacters();
+
 });

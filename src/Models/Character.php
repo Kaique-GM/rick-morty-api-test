@@ -11,6 +11,15 @@ class Character
     public string $image;
     public string $url;
 
+    public static function save(int $api_id, int $user_id, string $name, string $species, string $image, string $url)
+    {
+        $pdo = Connection::getConnection();
+
+        $stmt = $pdo->prepare("INSERT INTO characters (api_id, user_id, name, species, image, url) VALUES (?, ?, ?, ?, ?, ?)");
+
+        return $stmt->execute([$api_id, $user_id, $name, $species, $image, $url]);
+    }
+
     public static function findCharacterByApiIdAndUserId(int $api_id, int $user_id)
     {
         $pdo = Connection::getConnection();
@@ -24,12 +33,15 @@ class Character
     }
 
 
-    public static function save(int $api_id, int $user_id, string $name, string $species, string $image, string $url)
+    public static function findCharactersByUserId(int $user_id)
     {
         $pdo = Connection::getConnection();
 
-        $stmt = $pdo->prepare("INSERT INTO characters (api_id, user_id, name, species, image, url) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt = $pdo->prepare("SELECT * FROM characters WHERE user_id = ?");
+        $stmt->execute([$user_id]);
 
-        return $stmt->execute([$api_id, $user_id, $name, $species, $image, $url]);
+        $characters = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $characters;
     }
 }

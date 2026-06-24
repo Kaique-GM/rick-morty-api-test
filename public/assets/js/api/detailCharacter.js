@@ -13,6 +13,8 @@ export async function initCharacter() {
 
     if (!manageUserButtons || !saveCharacterBtn) return;
 
+    
+
     saveCharacterBtn.addEventListener("click", () => {
         if (!userId) {
             window.location.href = "/login";

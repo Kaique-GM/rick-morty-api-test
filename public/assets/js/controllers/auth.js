@@ -1,4 +1,4 @@
-export function register() {
+export async function register() {
     const form = document.getElementById("registerForm");
 
     if (!form) return;
@@ -39,7 +39,7 @@ export function register() {
     });
 }
 
-export function login() {
+export async function login() {
     const formLogin = document.getElementById("loginForm");
 
     if (!formLogin) return;
@@ -74,4 +74,15 @@ export function login() {
 
         window.location.href = "/";
     });
+}
+
+export async function getUserId() {
+    const res = await fetch("/me");
+    const session = await res.json();
+
+    if (session.logged) {
+        return session.user_id;
+    }
+
+    return null;
 }

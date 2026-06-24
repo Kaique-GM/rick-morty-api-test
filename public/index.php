@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 require_once '../src/Controllers/AuthController.php';
+require_once '../src/Controllers/CharacterController.php';
 
 session_start();
 
@@ -67,6 +68,15 @@ switch ($uri) {
             'logged' => isset($_SESSION['user_id']),
             'user_id' => $_SESSION['user_id'] ?? null,
         ]);
+        break;
+
+    case '/saveCharacter':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            exit;
+        }
+
+        CharacterController::saveCharacter();
         break;
 
     default:

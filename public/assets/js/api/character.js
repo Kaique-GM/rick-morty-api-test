@@ -1,9 +1,26 @@
+import { getUserId } from "../controllers/auth.js";
+
 export async function initCharacter() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
     let url = "https://rickandmortyapi.com/api/character/" + id;
 
-    loadCharacter(url);
+    const character = await loadCharacter(url);
+    const userId = await getUserId();
+
+    const manageUserButtons = document.getElementById("userButtons");
+    const saveCharacterBtn = document.getElementById("saveButton");
+
+    if (!manageUserButtons || !saveCharacterBtn) return;
+
+    saveCharacterBtn.addEventListener("click", () => {
+        if (!userId) {
+            window.location.href = "/login";
+            return;
+        }
+
+        saveCharacter(character, userId);
+    });
 }
 
 async function loadCharacter(url) {
@@ -70,4 +87,47 @@ async function loadCharacter(url) {
 
         </div>
     `;
+
+    return data;
+}
+
+async function saveCharacter(character, userId) {
+
+    const mensageText = document.getElementById("mensageText");
+
+    let api_id = character.id;
+    let user_id = userId;
+    let name = character.name;
+    let species = character.species;
+    let image = character.image;
+    let url = character.url;
+
+    const response = await fetch("/saveCharacter", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            api_id,
+            user_id,
+            name,
+            species,
+            image,
+            url
+        })
+    });
+
+    const data = await response.text();
+
+    if (!response.ok) {
+        mensageText.classList.remove("sucessMensage");
+        mensageText.classList.add("failMensage")
+        mensageText.textContent = data;
+        return;
+    }
+
+    mensageText.classList.remove("failMensage");
+    mensageText.classList.add("sucessMensage");
+    mensageText.textContent = data;
+
 }

@@ -214,7 +214,7 @@
 .manageButtons .editButton:hover {
     background-color: #333333;
     border-color: #2563EB;
-    transform: scale(1.1);
+    transform: scale(0.95);
 }
 
 .manageButtons .deleteButton {
@@ -234,7 +234,7 @@
 .manageButtons .deleteButton:hover {
     background-color: #333333;
     border-color: #DC2626;
-    transform: scale(1.1);
+    transform: scale(0.95);
 }
 
 .manageButtons .returnButton {

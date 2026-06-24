@@ -44,4 +44,14 @@ class Character
 
         return $characters;
     }
+
+    public static function deleteCharacterByApiIdAndUserId(int $api_id, int $user_id): bool
+    {
+        $pdo = Connection::getConnection();
+
+        $stmt = $pdo->prepare("DELETE FROM characters WHERE api_id = ? AND user_id = ?");
+        $stmt->execute([$api_id, $user_id]);
+
+        return $stmt->rowCount() > 0;
+    }
 }

@@ -10,19 +10,47 @@ export async function initCharacter() {
 
     const manageUserButtons = document.getElementById("userButtons");
     const saveCharacterBtn = document.getElementById("saveButton");
+    const deleteCharacterBtn = document.getElementById("deleteButton");
+    const mensageText = document.getElementById("mensageText");
 
-    if (!manageUserButtons || !saveCharacterBtn) return;
 
-    
+    if (!manageUserButtons || !saveCharacterBtn || !deleteCharacterBtn) return;
 
-    saveCharacterBtn.addEventListener("click", () => {
+
+    saveCharacterBtn.addEventListener("click", async () => {
         if (!userId) {
             window.location.href = "/login";
             return;
         }
 
-        saveCharacter(character, userId);
+        await saveCharacter(character, userId);
+
+        manageUserButtons.classList.remove("hidden");
     });
+
+    deleteCharacterBtn.addEventListener("click", async () => {
+        if (!userId) {
+            window.location.href = "/login";
+            return;
+        }
+
+        const response = await deleteCharacter(character, userId);
+
+        if (response.deleted) {
+            manageUserButtons.classList.add("hidden");
+            mensageText.classList.remove("sucessMensage");
+            mensageText.classList.add("failMensage")
+            mensageText.textContent = "Personagem removido dos favoritos.";
+        }
+    });
+
+    if (userId) {
+        const characterExists = await checkCharacter(character, userId);
+
+        if (characterExists.exists) {
+            manageUserButtons.classList.remove("hidden");
+        }
+    }
 }
 
 async function loadCharacter(url) {
@@ -95,8 +123,6 @@ async function loadCharacter(url) {
 
 async function saveCharacter(character, userId) {
 
-    const mensageText = document.getElementById("mensageText");
-
     let api_id = character.id;
     let user_id = userId;
     let name = character.name;
@@ -132,4 +158,40 @@ async function saveCharacter(character, userId) {
     mensageText.classList.add("sucessMensage");
     mensageText.textContent = data;
 
+}
+
+async function checkCharacter(character, userId) {
+    let api_id = character.id;
+    let user_id = userId;
+
+    const response = await fetch("/checkCharacter", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            api_id,
+            user_id,
+        })
+    });
+
+    const data = await response.json();
+
+    return data;
+}
+
+async function deleteCharacter(character, userId) {
+    let api_id = character.id;
+    let user_id = userId;
+
+
+    const response = await fetch("/deleteCharacter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ api_id, user_id, })
+    });
+
+    const data = await response.json();
+
+    return data;
 }

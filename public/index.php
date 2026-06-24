@@ -88,6 +88,24 @@ switch ($uri) {
         CharacterController::findAllCharacters();
         break;
 
+    case '/checkCharacter':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            exit;
+        }
+
+        CharacterController::checkCharacter();
+        break;
+
+    case '/deleteCharacter':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            exit;
+        }
+
+        CharacterController::deleteCharacter();
+        break;
+
     default:
         http_response_code(404);
         echo "Página não encontrada";

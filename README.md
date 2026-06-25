@@ -1,19 +1,33 @@
 # Teste para desenvolvedor - Vitafor
 
-## Tecnologias a serem utilizadas
+<p align="center">
+    <img src="./public/assets/images/vitafor.webp" width="110">
+</p>
 
--   PHP
--   SQLite
--   Front-end com Requisições assíncronas Javascript e Bootstrap 5.
+## Tecnologias utilizadas
+
+- PHP 8.2 
+- SQLite
+- Front-end com requisições assíncronas JavaScript
 
 ## Aplicação para exibir personagens
 
-Desenvolva uma aplicação que irá consumir a API do [Rick and Morty](https://rickandmortyapi.com/) e irá apresentar a estrutura/menu abaixo:
+A aplicação desenvolvida consome a API do [Rick and Morty](https://rickandmortyapi.com/) para exibir informações dos personagens de forma dinâmica, utilizando requisições assíncronas.
 
--   Home
--   Personagens
--   Sobre
--   Login / Cadastro
+Além da visualização dos dados externos, o sistema também permite a manipulação local das informações, oferecendo funcionalidades completas de CRUD (Create, Read, Update, Delete). O usuário pode:
+
+- Visualizar personagens vindos da API
+- Salvar personagens no banco de dados local
+- Editar informações dos personagens salvos
+- Excluir personagens do banco de dados
+
+A aplicação foi estruturada com as seguintes páginas:
+
+- Home: exibe personagens da API do Rick and Morty.
+- Personagens: lista os personagens salvos no banco local.
+- Sobre: informações sobre o desenvolvedor.
+- Login / Cadastro: sistema de autenticação de usuários.
+- 404: página para rotas não encontradas.
 
 ## Páginas da aplicação
 

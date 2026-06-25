@@ -16,6 +16,10 @@
 
 .characterBox .characterImg {
     border-radius: 100%;
+    border-width: 3px 6px 6px 7px;
+    border-style: solid;
+    border-color: #333333;
+    box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;

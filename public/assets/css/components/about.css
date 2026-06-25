@@ -1,0 +1,459 @@
+.aboutSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+}
+
+.aboutSection .aboutMe {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1000px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-radius: 50px;
+    border-width: 3px 6px 6px 7px;
+    border-style: solid;
+    border-color: #333333;
+    box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.5);
+}
+
+.aboutSection .aboutMeImg {
+    border-radius: 100%;
+    border-width: 3px 6px 6px 7px;
+    border-style: solid;
+    border-color: #333333;
+    box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.aboutSection .aboutMeImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.aboutSection .aboutMeImg:hover img {
+    transform: scale(1.05);
+}
+
+.aboutSection .aboutMe .AboutMeContent {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+    gap: 10px;
+}
+
+.aboutSection .aboutMe .AboutMeContent .AboutMeContentTop {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+    gap: 18px;
+    color: #333333;
+}
+
+.aboutSection .aboutMe .AboutMeContent .AboutMeContentTop span {
+    color: #ff9800;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.aboutSection .aboutMe .AboutMeContent .AboutMeContentTop h1 {
+    font-weight: bolder;
+    line-height: 40px;
+    font-size: 44px;
+}
+
+.aboutSection .aboutMe .AboutMeContent .AboutMeContentTop img {
+    width: 80px;
+}
+
+.aboutSection .aboutMe .AboutMeContent .AboutMeContentText {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+}
+
+.aboutSection .aboutMe .AboutMeContent .AboutMeContentText h2 {
+    font-weight: bold;
+    color: #ff9800;
+    font-size: 24px;
+}
+
+.aboutSection .aboutMe .AboutMeContent .AboutMeContentText p {
+    font-weight: 600;
+    color: #333333;
+    font-size: 18px;
+}
+
+.aboutSection .aboutMe .AboutMeContent .AboutMeContentLinks {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+.aboutSection .aboutMe .AboutMeContent .AboutMeContentLinks button {
+    background-color: #ff9800;
+    padding: 8px 32px;
+    border-radius: 112px;
+    color: white;
+    border-width: 3px 6px 6px 7px;
+    border-style: solid;
+    border-color: #333333;
+    transition: 0.5s;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.aboutSection .aboutMe .AboutMeContent .AboutMeContentLinks button:hover {
+    background-color: #333333;
+    border-color: #ff9800;
+    transform: scale(0.95);
+}
+
+
+.aboutSection .aboutMe .AboutMeContent .AboutMeContentLinks .AboutMeContentNetwork {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.aboutSection .aboutMe .AboutMeContent .AboutMeContentLinks a {
+    display: inline-flex;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 112px;
+    border-width: 4px 4px 4px 4px;
+    border-style: solid;
+    border-color: #333333;
+    text-decoration: none;
+    color: #333333;
+    font-size: 24px;
+    transition: transform 0.3s ease, background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.aboutSection .aboutMe .AboutMeContent .AboutMeContentLinks a:hover {
+    border-color: #ff9800;
+    color: white;
+    background-color: #333333;
+    transform: scale(1.05);
+}
+
+@media (max-width: 1400px) {
+    .aboutSection {
+        max-width: 700px;
+    }
+
+    .aboutSection .aboutMe {
+        display: flex;
+        flex-direction: column;
+        max-width: 700px;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 10px;
+    }
+}
+
+@media (max-width: 760px) {
+    .aboutSection .aboutMe {
+        display: flex;
+        flex-direction: column;
+        max-width: 450px;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    .aboutSection {
+        max-width: 300px;
+    }
+
+    .aboutSection .aboutMe {
+        display: flex;
+        flex-direction: column;
+        max-width: 280px;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 5px;
+    }
+
+    .aboutSection .aboutMeImg {
+        width: 150px;
+    }
+
+    .aboutSection .aboutMe .AboutMeContent .AboutMeContentLinks {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .aboutSection .aboutMe .AboutMeContent .AboutMeContentTop {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .aboutSection .aboutMe .AboutMeContent .AboutMeContentTop .AboutMeContentInner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .aboutSection .aboutMe .AboutMeContent .AboutMeContentTop span {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .aboutSection .aboutMe .AboutMeContent .AboutMeContentTop h1 {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .aboutSection .aboutMe .AboutMeContent .AboutMeContentTop img {
+        width: 80px;
+    }
+
+    .aboutSection .aboutMe .AboutMeContent .AboutMeContentText {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .aboutSection .aboutMe .AboutMeContent .AboutMeContentText h2 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .aboutSection .aboutMe .AboutMeContent .AboutMeContentText p {
+        font-size: 16px;
+        text-align: center;
+
+    }
+}
+
+.aboutSection .projectSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 0px;
+    gap: 100px;
+}
+
+.aboutSection .projectSection h3 {
+    color: #333333;
+    font-weight: bolder;
+    font-size: 52px;
+    text-decoration: underline #ff9800;
+    text-underline-offset: 10px;
+}
+
+.aboutSection .projectSection .moreContent {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.aboutSection .projectSection .moreContent span {
+    color: #333333;
+    font-weight: bolder;
+    font-size: 32px;
+    text-decoration: underline #ff9800;
+    text-underline-offset: 10px;
+}
+
+.aboutSection .projectSection .moreContent a{
+    text-decoration: none;
+    display: inline-flex;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 112px;
+    border-width: 4px 4px 4px 4px;
+    border-style: solid;
+    border-color: #333333;
+    text-decoration: none;
+    color: #333333;
+    font-size: 24px;
+    transition: transform 0.3s ease, background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.aboutSection .projectSection a:hover {
+    border-color: #ff9800;
+    color: white;
+    background-color: #333333;
+    transform: scale(1.05);
+}
+
+
+.aboutSection .projectSection .projectBox {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    max-width: 1000px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.aboutSection .projectSection .projectBox .projectCard {
+    border-radius: 50px;
+    background-color: #202329;
+    padding: 25px 20px;
+    border-left: 5px solid #ff9800;
+    box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: transform 0.3s;
+    transition: 0.3s;
+}
+
+.aboutSection .projectSection .projectBox .projectCard:hover {
+    transform: scale(1.05);
+    background-color: #F5F5F5;
+    border-color: #202329;
+}
+
+.aboutSection .projectSection .projectBox .projectCardImg {
+    display: flex;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.aboutSection .projectSection .projectBox .projectCardImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.aboutSection .projectSection .projectBox .projectCardText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+    padding: 0px 5px;
+}
+
+.aboutSection .projectSection .projectBox .projectCardText h4 {
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: underline #ff9800;
+    text-underline-offset: 5px;
+}
+
+.aboutSection .projectSection .projectBox .projectCard:hover .projectCardText h4 {
+    color: #333333;
+}
+
+.aboutSection .projectSection .projectBox .projectCardText span {
+    font-weight: bold;
+    font-size: 18px;
+    color: #9E9E9E;
+}
+
+.aboutSection .projectSection .projectBox .projectCardText p {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.aboutSection .projectSection .projectBox .projectCard:hover .projectCardText p {
+    color: #333333;
+}
+
+@media (max-width: 1400px) {
+    .aboutSection .projectSection {
+        max-width: 650px;
+        padding: 50px 0px;
+        gap: 50px;
+    }
+
+    .aboutSection .projectSection h3 {
+        font-size: 38px;
+        text-align: center;
+    }
+
+
+    .aboutSection .projectSection .projectBox {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 650px;
+        gap: 20px;
+    }
+
+ 
+
+    .aboutSection .projectSection .projectBox .projectCardImg {
+        width: 250px;
+    }
+}
+
+@media (max-width: 680px) {
+
+    .aboutSection .projectSection {
+        max-width: 1400px;
+        padding: 50px 0px;
+        gap: 50px;
+    }
+
+    .aboutSection .projectSection h3 {
+        font-size: 34px;
+        text-align: center;
+    }
+
+
+    .aboutSection .projectSection .projectBox {
+        grid-template-columns: 1fr;
+        max-width: 1000px;
+        gap: 20px;
+    }
+
+    .aboutSection .projectSection .projectBox .projectCardImg {
+        width: 250px;
+    }
+}

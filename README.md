@@ -1,7 +1,7 @@
-# Teste para desenvolvedor - Vitafor
+# Consumo da API Rick and Morty
 
 <p align="center">
-    <img src="./public/assets/images/vitafor.webp" width="110">
+    <img src="./public/assets/images/readme/Rick_and_Morty.webp" width="300" alt="Rick and Morty Logo" >
 </p>
 
 ## Tecnologias utilizadas
@@ -10,69 +10,142 @@
 - SQLite
 - Front-end com requisições assíncronas JavaScript
 
-## Aplicação para exibir personagens
+## Sobre o projeto
 
-A aplicação desenvolvida consome a API do [Rick and Morty](https://rickandmortyapi.com/) para exibir informações dos personagens de forma dinâmica, utilizando requisições assíncronas.
+Esta aplicação foi desenvolvida como parte do processo seletivo para desenvolvedor da [Vitafor](https://www.vitafor.com.br/). <a href="https://www.vitafor.com.br/" target="_blank"> <img src="./public/assets/images/readme/vitafor.webp" alt="Vitafor Logo" width="25"></a>
 
-Além da visualização dos dados externos, o sistema também permite a manipulação local das informações, oferecendo funcionalidades completas de CRUD (Create, Read, Update, Delete). O usuário pode:
+O sistema consome a API do [Rick and Morty](https://rickandmortyapi.com/) para exibir informações dos personagens de forma dinâmica por meio de requisições assíncronas em JavaScript.
 
-- Visualizar personagens vindos da API
-- Salvar personagens no banco de dados local
-- Editar informações dos personagens salvos
-- Excluir personagens do banco de dados
+Além da integração com a API, a aplicação possui um sistema próprio desenvolvido em PHP, permitindo que usuários autenticados salvem personagens em um banco de dados SQLite e realizem operações completas de gerenciamento (CRUD).
 
-A aplicação foi estruturada com as seguintes páginas:
+### Funcionalidades
 
-- Home: exibe personagens da API do Rick and Morty.
-- Personagens: lista os personagens salvos no banco local.
-- Sobre: informações sobre o desenvolvedor.
-- Login / Cadastro: sistema de autenticação de usuários.
-- 404: página para rotas não encontradas.
+- Consumo da API do [Rick and Morty](https://rickandmortyapi.com/)
+- Listagem dinâmica de personagens
+- Sistema de autenticação (Login e Cadastro)
+- Salvamento de personagens no banco de dados local
+- Edição de personagens salvos
+- Exclusão de personagens
+
+## Como executar o projeto
+
+### 1. Clone o repositório
+   
+```bash 
+    https://github.com/Kaique-GM/rick-morty-api-test.git
+```
+
+### 2. Inicie o servidor
+
+```bash 
+    php -S localhost:8000 -t public
+```
+
+### 3. Acesse a aplicação
+
+```bash 
+    http://localhost:8000
+```
+
+## Estrutura do banco de dados
+
+O projeto utiliza um banco de dados SQLite. As tabelas foram estruturadas utilizando os seguintes comandos SQL:
+
+```bash 
+    CREATE TABLE users ( 
+        id INTEGER PRIMARY KEY AUTOINCREMENT, 
+        email TEXT NOT NULL UNIQUE, 
+        password TEXT NOT NULL, 
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP 
+    );
+```
+
+```bash 
+    CREATE TABLE characters ( 
+        id INTEGER PRIMARY KEY AUTOINCREMENT, 
+        api_id INTEGER NOT NULL, 
+        user_id INTEGER NOT NULL, 
+        name TEXT NOT NULL, 
+        species TEXT, 
+        image TEXT, 
+        url TEXT, 
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP, 
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP, 
+        
+        UNIQUE(api_id, user_id) 
+    );
+```
+
+## Credenciais para Teste
+
+Para facilitar a avaliação da aplicação, deixei um usuário pré-cadastrado contendo alguns personagens já salvos no banco de dados.
+
+**E-mail**
+```bash
+evilMorty71@email.com
+```
+
+**Senha**
+```bash
+iHateRickys123
+```
+Você também pode criar uma nova conta para testar o fluxo completo de cadastro, login e gerenciamento de personagens.
 
 ## Páginas da aplicação
 
-**HOME**
+### HOME 
 
-A Home deverá conter uma listagem de personagens vindos diretamente da [API](https://rickandmortyapi.com/), o layout da tela deverá ser o seguinte:
+A Home é responsável por exibir a listagem de personagens consumidos diretamente da API do Rick and Morty.
 
-![HOME](./blockframe-home.png)
+<p align="center"> 
+  <img src="./public/assets/images/readme/home.webp" alt="Home" width="70%"> 
+</p> 
 
-Eles devem estar dispostos como uma lista de cards que permitem que o usuário clique e abra uma página de maiores detalhes do personagem, página de detalhes do personagem.
+### DETALHES DO PERSONAGEM 
 
-**DETALHES DO PERSONAGEM**
+A tela de detalhes exibe todas as informações do personagem selecionado. Quando o personagem é salvo no banco de dados e o usuário está autenticado, também são disponibilizadas as opções para editar e excluir o registro.
 
-Esta página deverá seguir o seguinte layout:
+<p align="center"> 
+  <img src="./public/assets/images/readme/details.webp" alt="Personagem vindo da API" width="48%"> 
+  <img src="./public/assets/images/readme/detailsLog.webp" alt="Personagem salvo no banco de dados" width="48%">
+</p> 
 
-![Detalhe do Personagem](./blockframe-detalhes-personagem.png)
+### PERSONAGENS
 
-O botão do canto inferior direito deve permitir que o usuário salve esse personagem à um banco de dados local, as informações que deverão ser salvas são:
+A página **Personagens** exibe os personagens salvos no banco de dados pelo usuário. A interface possui três estados distintos: 
 
-    { name, species, image, url, created_at, updated_at }
+- **Logado com personagens salvos:** lista todos os personagens armazenados, permitindo acessar seus detalhes. 
+- **Logado sem personagens salvos:** exibe uma mensagem informando que ainda não há personagens cadastrados. 
+- **Deslogado:** solicita que o usuário realize o login para visualizar e gerenciar seus personagens.
 
-Caso essa tela tenha sido aberta vindo da HOME, o botão deverá estar visível e as informações exibidas serão as vindas da API, caso ela tenha sido aberta vindo da página de personagens o botão não ficará disponível e as informações à serem exibidas serão as que estão salvas no banco de dados local. As informações que serão exibidas vindas da API são:
+<p align="center"> 
+    <img src="./public/assets/images/readme/saveCharacters.webp" alt="Personagens salvos no banco de dados" width="33%"> 
+    <img src="./public/assets/images/readme/charactersOnEmpty.webp" alt="Tela sem personagens salvos" width="33%"> 
+    <img src="./public/assets/images/readme/charactersOff.webp" alt="Tela com usuário deslogado" width="33%">
+</p>
 
-    { name, species, gender, location, image, url }
+### SOBRE
 
-Caso o personagem já esteja salvo no banco de dados local, esta tela deverá permitir que o usuário exclua o registro e edite as informações.
+A página **Sobre** é um espaço onde me apresento, compartilhando um breve resumo sobre minha trajetória, experiência profissional, projetos desenvolvidos e links para meu GitHub, portfólio, LinkedIn e contato por e-mail.
 
-**PERSONAGENS**
+<p align="center"> 
+  <img src="./public/assets/images/readme/about.webp" alt="Sobre" width="70%"> 
+</p>
 
-Está tela deverá ser similar à HOME com diferença de que apenas irá exibir os personagens que já estão salvos no banco de dados local. Também deverá permitir a visualização de detalhes ao clicar no personagem, direcionando assim para a tela de DETALHES DO PERSONAGEM.
 
-![PERSONAGENS](./blockframe-personagens.png)
+### TELA DE LOGIN/CADASTRO
 
-**SOBRE**
+As telas de **Login** e **Cadastro** permitem que o usuário acesse uma conta existente ou crie uma nova para utilizar as funcionalidades da aplicação.
 
-Está deverá ser uma página livre, onde você irá apresentar um mini currículo seu. Aqui você irá se apresentar, por links para sites que você desenvolveu, projetos e tudo que você achar interessante nos mostrar.
+<p align="center"> 
+  <img src="./public/assets/images/readme/login.webp" alt="Login" width="48%"> 
+  <img src="./public/assets/images/readme/register.webp" alt="Cadastro" width="48%">
+</p> 
 
-**LOGIN / CADASTRO**
+### PÁGINA NÃO ENCOTRADA
 
-O usuário deverá poder se cadastrar e logar com o cadastro realizado. O usuário só poderá salvar um personagem caso ele esteja logado no sistema, caso não esteja e clique no botão para salvar o personagem, ele deve ser direcionado para a tela de LOGIN / CADASTRO.
+A página **404** é exibida quando o usuário tenta acessar uma rota inexistente, apresentando uma mensagem informando que a página solicitada não foi encontrada. 
 
-### Tela de login
-
-![LOGIN](./blockframe-login.png)
-
-### Tela de cadastro
-
-![LOGIN](./blockframe-cadastro.png)
+<p align="center"> 
+   <img src="./public/assets/images/readme/error404.webp" alt="Página 404" width="70%"> 
+</p>

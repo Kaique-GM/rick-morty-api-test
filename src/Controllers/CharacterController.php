@@ -39,10 +39,11 @@ class CharacterController
             exit('Dados inválidos');
         }
 
-        $characterExists = Character::findCharacterByApiIdAndUserId($data['api_id'], $data['user_id']);
+        $character = Character::findCharacterByApiIdAndUserId($data['api_id'], $data['user_id']);
 
         echo json_encode([
-            'exists' => $characterExists ? true : false
+            'exists' => $character ? true : false,
+            'character' => $character
         ]);
         exit;
     }
@@ -83,7 +84,7 @@ class CharacterController
         echo json_encode([
             'deleted' => $deleted
         ]);
-        
+
         exit;
     }
 }

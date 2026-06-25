@@ -1,21 +1,38 @@
 import { getUserId } from "../controllers/auth.js";
 
 export async function initCharacter() {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
-    let url = "https://rickandmortyapi.com/api/character/" + id;
-
-    const character = await loadCharacter(url);
-    const userId = await getUserId();
-
     const manageUserButtons = document.getElementById("userButtons");
     const saveCharacterBtn = document.getElementById("saveButton");
     const deleteCharacterBtn = document.getElementById("deleteButton");
     const mensageText = document.getElementById("mensageText");
 
+    const params = new URLSearchParams(window.location.search);
+    const api_id = params.get("id");
+    let url = "https://rickandmortyapi.com/api/character/" + api_id;
+
+    const userId = await getUserId();
+    let character;
 
     if (!manageUserButtons || !saveCharacterBtn || !deleteCharacterBtn) return;
 
+    if (userId) {
+        const response = await checkCharacter(api_id, userId);
+
+        if (response.exists) {
+            manageUserButtons.classList.remove("hidden");
+
+            character = response.character;
+            character.id = character.api_id
+
+            await renderCharacterFromDB(character);
+
+        } else {
+            character = await loadCharacterFromApi(url);
+        }
+
+    } else {
+        character = await loadCharacterFromApi(url);
+    }
 
     saveCharacterBtn.addEventListener("click", async () => {
         if (!userId) {
@@ -23,9 +40,16 @@ export async function initCharacter() {
             return;
         }
 
-        await saveCharacter(character, userId);
+        await saveCharacter(character, userId, mensageText);
 
         manageUserButtons.classList.remove("hidden");
+
+        const response = await checkCharacter(character.id, userId);
+
+        character = response.character;
+        character.id = character.api_id;
+
+        await renderCharacterFromDB(character);
     });
 
     deleteCharacterBtn.addEventListener("click", async () => {
@@ -41,19 +65,15 @@ export async function initCharacter() {
             mensageText.classList.remove("sucessMensage");
             mensageText.classList.add("failMensage")
             mensageText.textContent = "Personagem removido dos favoritos.";
+
+            const url = `https://rickandmortyapi.com/api/character/${character.id}`;
+
+            character = await loadCharacterFromApi(url);
         }
     });
-
-    if (userId) {
-        const characterExists = await checkCharacter(character, userId);
-
-        if (characterExists.exists) {
-            manageUserButtons.classList.remove("hidden");
-        }
-    }
 }
 
-async function loadCharacter(url) {
+async function loadCharacterFromApi(url) {
     const container = document.getElementById("characterBox");
 
     const res = await fetch(url);
@@ -101,6 +121,11 @@ async function loadCharacter(url) {
                     <p>Origem: </p>
                     <span>${data.origin.name}</span>
                 </div>
+
+                <div class="charactertext">
+                    <p>Local: </p>
+                    <span>${data.location.name}</span>
+                </div>
             </div>
 
             <div class="characterContent">
@@ -110,8 +135,8 @@ async function loadCharacter(url) {
                 </div>
 
                 <div class="charactertext">
-                    <p>Local: </p>
-                    <span>${data.location.name}</span>
+                    <p>URL: </p>
+                    <span>${data.url}</span>
                 </div>
             </div>
 
@@ -121,9 +146,69 @@ async function loadCharacter(url) {
     return data;
 }
 
-async function saveCharacter(character, userId) {
+async function renderCharacterFromDB(character) {
+    const container = document.getElementById("characterBox");
 
-    let api_id = character.id;
+    const options = {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+    };
+
+    const createdAt = new Date(character.created_at).toLocaleString("pt-BR", options);
+    const updatedAt = new Date(character.updated_at).toLocaleString("pt-BR", options);
+
+    if (!container) {
+        return;
+    }
+
+    container.classList.add("characterBox");
+
+    container.innerHTML = "";
+
+    container.innerHTML = `
+        <div class="characterImg">
+            <img src="${character.image}" alt="${character.name}" draggable="false">
+        </div>
+
+        <div class="characterDetails">
+            <h1>${character.name}</h1>
+
+            <div class="characterContent">
+                <div class="charactertext">
+                    <p>Espécie: </p>
+                    <span>${character.species}</span>
+                </div>
+
+                <div class="charactertext">
+                    <p>URL: </p>
+                    <span>${character.url}</span>
+                </div>
+            </div>
+
+            <div class="characterContent">
+                <div class="charactertext">
+                    <p>Criado em: </p>
+                    <span>${createdAt}</span>
+                </div>
+
+                <div class="charactertext">
+                    <p>Editado em: </p>
+                    <span>${updatedAt}</span>
+                </div>
+            </div>
+            
+
+        </div>
+    `;
+
+}
+
+async function saveCharacter(character, userId, mensageText) {
+
+    let api_id = character.id
     let user_id = userId;
     let name = character.name;
     let species = character.species;
@@ -160,8 +245,7 @@ async function saveCharacter(character, userId) {
 
 }
 
-async function checkCharacter(character, userId) {
-    let api_id = character.id;
+async function checkCharacter(api_id, userId) {
     let user_id = userId;
 
     const response = await fetch("/checkCharacter", {
@@ -181,7 +265,7 @@ async function checkCharacter(character, userId) {
 }
 
 async function deleteCharacter(character, userId) {
-    let api_id = character.id;
+    let api_id = character.id
     let user_id = userId;
 
 

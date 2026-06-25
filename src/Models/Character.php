@@ -15,23 +15,24 @@ class Character
     {
         $pdo = Connection::getConnection();
 
-        $stmt = $pdo->prepare("INSERT INTO characters (api_id, user_id, name, species, image, url) VALUES (?, ?, ?, ?, ?, ?)");
+        $now = date('Y-m-d H:i:s');
 
-        return $stmt->execute([$api_id, $user_id, $name, $species, $image, $url]);
+        $stmt = $pdo->prepare("INSERT INTO characters (api_id, user_id, name, species, image, url, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+
+        return $stmt->execute([$api_id, $user_id, $name, $species, $image, $url, $now, $now]);
     }
 
     public static function findCharacterByApiIdAndUserId(int $api_id, int $user_id)
     {
         $pdo = Connection::getConnection();
 
-        $stmt = $pdo->prepare("SELECT api_id, user_id FROM characters WHERE api_id = ? AND user_id = ?");
+        $stmt = $pdo->prepare("SELECT * FROM characters WHERE api_id = ? AND user_id = ?");
         $stmt->execute([$api_id, $user_id]);
 
         $character = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return $character;
     }
-
 
     public static function findCharactersByUserId(int $user_id)
     {

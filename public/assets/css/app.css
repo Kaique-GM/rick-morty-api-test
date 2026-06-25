@@ -60,3 +60,38 @@ body {
         gap: 8px;
     }
 }
+
+.errorPage {
+    height: 80dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #333333;
+    font-size: 28px;
+    font-weight: bold;
+    gap: 10px;
+}
+
+.errorPage span {
+    text-align: center;
+    text-decoration: underline #ff9800;
+    text-underline-offset: 10px;
+}
+
+.errorPage a {
+    text-decoration: none;
+    color: #333333;
+    transition: 0.5s;
+}
+
+.errorPage a:hover {
+    color: #ff9800;
+    transform: scale(1.1);
+}
+
+@media (max-width: 568px) {
+    .errorPage span {
+        font-size: 22px;
+    }
+}

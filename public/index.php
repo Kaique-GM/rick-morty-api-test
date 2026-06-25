@@ -117,7 +117,7 @@ switch ($uri) {
         break;
 
     default:
+        include 'views/404.html';
         http_response_code(404);
-        echo "Página não encontrada";
         break;
 }

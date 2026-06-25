@@ -298,7 +298,7 @@
     text-underline-offset: 10px;
 }
 
-.aboutSection .projectSection .moreContent a{
+.aboutSection .projectSection .moreContent a {
     text-decoration: none;
     display: inline-flex;
     height: 40px;
@@ -426,7 +426,7 @@
         gap: 20px;
     }
 
- 
+
 
     .aboutSection .projectSection .projectBox .projectCardImg {
         width: 250px;
@@ -455,5 +455,175 @@
 
     .aboutSection .projectSection .projectBox .projectCardImg {
         width: 250px;
+    }
+
+    .aboutSection .projectSection .moreContent {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .aboutSection .projectSection .moreContent span {
+        font-size: 32px;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .aboutSection .projectSection .moreContent a {
+        text-decoration: none;
+        display: inline-flex;
+        height: 40px;
+        width: 40px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 112px;
+        border-width: 4px 4px 4px 4px;
+        border-style: solid;
+        border-color: #333333;
+        text-decoration: none;
+        color: #333333;
+        font-size: 24px;
+        transition: transform 0.3s ease, background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+}
+
+.aboutSection .techSkillSection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.aboutSection .techSkillSection h3 {
+    color: #333333;
+    font-weight: bolder;
+    font-size: 52px;
+    text-decoration: underline #ff9800;
+    text-underline-offset: 10px;
+}
+
+.aboutSection .techSkillSection .techBox {
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.aboutSection .techSkillSection .techBox .techCard {
+    border-radius: 50px;
+    background-color: #202329;
+    padding: 25px 20px;
+    border-left: 5px solid #ff9800;
+    box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    transition: transform 0.3s;
+    transition: 0.3s;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutSection .techSkillSection .techBox .techCard:hover {
+    transform: scale(1.05);
+    background-color: #F5F5F5;
+    border-color: #202329;
+}
+
+.aboutSection .techSkillSection .techBox .techCard span {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    text-decoration: underline #ff9800;
+    text-underline-offset: 10px;
+}
+
+.aboutSection .techSkillSection .techBox .techCard:hover span {
+    color: #333333;
+}
+
+.aboutSection .techSkillSection .techBox .techCard .techIcon {
+    display: flex;
+    color: white;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 280px;
+}
+
+.aboutSection .techSkillSection .techBox .techCard .techIcon i {
+    display: flex;
+    height: 45px;
+    width: 45px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 112px;
+    border: 2px solid #ff9800;
+    text-decoration: none;
+    color: white;
+    font-size: 28px;
+    transition: transform 0.3s ease, background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.aboutSection .techSkillSection .techBox .techCard .techIcon svg {
+    display: flex;
+    height: 32px;
+    width: 32px;
+    overflow: visible;
+    padding: 8px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 112px;
+    border: 2px solid #ff9800;
+    text-decoration: none;
+    color: white;
+    font-size: 28px;
+    transition: transform 0.3s ease, background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.aboutSection .techSkillSection .techBox .techCard:hover .techIcon i,
+.aboutSection .techSkillSection .techBox .techCard:hover .techIcon svg {
+    border-color: #ff9800;
+    color: #333333;
+}
+
+@media (max-width: 680px) {
+
+    .aboutSection .techSkillSection {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 60px;
+        max-width: 300px;
+        margin: 0 auto;
+        background-color: yellow;
+    }
+
+    .aboutSection .techSkillSection h3 {
+        color: #333333;
+        font-weight: bolder;
+        font-size: 32px;
+        text-decoration: underline #ff9800;
+        text-underline-offset: 10px;
+    }
+
+    .aboutSection .techSkillSection .techBox {
+        color: white;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 100%;
     }
 }

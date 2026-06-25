@@ -87,4 +87,26 @@ class CharacterController
 
         exit;
     }
+
+    public static function editCharacter()
+    {
+        header('Content-Type: application/json');
+
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        if (
+            empty($data['api_id']) || empty($data['user_id']) || empty($data['name']) || empty($data['species']) || empty($data['image']) || empty($data['url'])
+        ) {
+            http_response_code(400);
+            exit('Dados inválidos');
+        }
+
+        $edited = Character::editCharacterByApiIdAndUserId($data['api_id'], $data['user_id'], $data['name'], $data['species'], $data['image'], $data['url']);
+
+        echo json_encode([
+            'edited' => $edited
+        ]);
+
+        exit;
+    }
 }

@@ -37,15 +37,6 @@ switch ($uri) {
         include 'views/login.html';
         break;
 
-    case '/logout':
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            http_response_code(405);
-            exit;
-        }
-
-        AuthController::logout();
-        break;
-
     case '/register':
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             http_response_code(405);
@@ -62,6 +53,15 @@ switch ($uri) {
         }
 
         AuthController::login();
+        break;
+
+    case '/logout':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            http_response_code(405);
+            exit;
+        }
+
+        AuthController::logout();
         break;
 
     case '/me':
@@ -99,12 +99,21 @@ switch ($uri) {
         break;
 
     case '/deleteCharacter':
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] !== 'DELETE') {
             http_response_code(405);
             exit;
         }
 
         CharacterController::deleteCharacter();
+        break;
+
+    case '/editCharacter':
+        if ($_SERVER['REQUEST_METHOD'] !== 'PUT') {
+            http_response_code(405);
+            exit;
+        }
+
+        CharacterController::editCharacter();
         break;
 
     default:

@@ -141,6 +141,10 @@
 }
 
 @media (max-width: 500px) {
+    .detailSection {
+        padding: 0px 0px 20px 0px;
+    }
+
     .characterBox {
         display: flex;
         flex-direction: column;
@@ -293,7 +297,7 @@
     transform: scale(0.95);
 }
 
-.saveButtonBox .mensageText{
+.saveButtonBox .mensageText {
     font-size: 18px;
     font-weight: bold;
 }
